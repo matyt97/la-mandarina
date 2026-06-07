@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>La Mandarina | Restaurant &amp; Shopería</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#E75A24", // Mandarin Orange
+                    "primary-container": "#F47D4A",
+                    "secondary": "#FFB300", // Golden Amber
+                    "secondary-container": "#FFC233",
+                    "tertiary": "#8C593B", // Warm Wood Brown
+                    "tertiary-container": "#A06B4D",
+                    "forest-dark": "#1E1A17", // Warm Ink / Charcoal (Primary dark)
+                    "on-background": "#1E1A17",
+                    "background": "#FAF6F0", // Cozy Soft Cream background
+                    "cream-base": "#FDFBF7",
+                    "outline": "#857D75",
+                    "outline-variant": "#DED7CD",
+                    "surface": "#FAF6F0",
+                    "surface-bright": "#FDFBF7",
+                    "surface-container": "#F3EDE4",
+                    "surface-container-low": "#F9F4EC",
+                    "surface-container-high": "#ECE4DA",
+                    "surface-container-highest": "#E2D8CC",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#1E1A17",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1E1A17",
+                    "on-surface-variant": "#595048",
+                    "error": "#BA1A1A",
+                    "error-container": "#FFDAD6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "xxl": "1.25rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "section-gap-sm": "64px",
+                    "margin-mobile": "20px",
+                    "section-gap-lg": "120px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Fraunces", "serif"],
+                    "headline-lg": ["Fraunces", "serif"],
+                    "headline-lg-mobile": ["Fraunces", "serif"],
+                    "display-lg": ["Fraunces", "serif"],
+                    "body-md": ["Plus Jakarta Sans", "sans-serif"],
+                    "label-md": ["Plus Jakarta Sans", "sans-serif"],
+                    "caption": ["Plus Jakarta Sans", "sans-serif"],
+                    "headline-sm": ["Fraunces", "serif"],
+                    "body-lg": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(30, 26, 23, 0.7) 0%, rgba(30, 26, 23, 0.45) 60%, rgba(30, 26, 23, 0.8) 100%);
+        }
+        .checkered-pattern {
+            background-color: #FDFBF7;
+            background-image: 
+                linear-gradient(45deg, #E75A24 25%, transparent 25%), 
+                linear-gradient(-45deg, #E75A24 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #E75A24 75%), 
+                linear-gradient(-45deg, transparent 75%, #E75A24 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .menu-grid-item:hover img {
+            transform: scale(1.05);
+        }
+        .dotted-leader {
+            border-bottom: 1px dotted #E75A24;
+            flex-grow: 1;
+            margin: 0 8px;
+            align-self: flex-end;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body class="text-on-background font-body-md bg-cream-base min-h-screen">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md transition-shadow duration-300 h-20 border-b border-outline-variant/30">
+        <nav class="flex justify-between items-center w-full px-6 md:px-gutter max-w-container-max mx-auto h-full">
+            <!-- Brand Logo -->
+            <a href="#" class="font-headline-sm text-headline-sm text-primary tracking-wider uppercase font-semibold flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">eco</span>
+                La Mandarina
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-gutter items-center">
+                <a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#menu">Carta</a>
+                <a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#history">Nosotros</a>
+                <a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#specialty">Especialidades</a>
+                <a class="ml-gutter bg-primary text-on-primary px-gutter py-2 rounded-full font-label-md hover:bg-primary-container transition-all shadow-sm hover:shadow-md" href="#reservations">Reservas</a>
+            </div>
+
+            <!-- Mobile Menu Trigger -->
+            <button id="mobile-menu-btn" class="md:hidden text-primary focus:outline-none" aria-label="Toggle menu">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md flex flex-col gap-8 items-center justify-center pt-20 transition-all duration-300">
+        <a class="text-2xl font-headline-sm text-primary hover:text-secondary transition-colors" href="#menu">Carta</a>
+        <a class="text-2xl font-headline-sm text-primary hover:text-secondary transition-colors" href="#history">Nosotros</a>
+        <a class="text-2xl font-headline-sm text-primary hover:text-secondary transition-colors" href="#specialty">Especialidades</a>
+        <a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-lg hover:bg-primary-container transition-all shadow-md" href="#reservations">Reservas</a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center pt-20">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img alt="La Mandarina restaurant facade and outdoor tables" class="w-full h-full object-cover" src="/la_mandarina_bg.jpg">
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+            <div class="relative z-10 max-w-container-max mx-auto px-gutter text-center">
+                <p class="text-label-md font-label-md text-secondary tracking-widest uppercase mb-base font-bold drop-shadow-md">Restaurant &amp; Shopería de Barrio</p>
+                <h1 class="font-display-lg text-display-lg text-cream-base mb-gutter drop-shadow-lg font-extrabold">La Mandarina</h1>
+                <p class="font-headline-sm text-headline-sm text-white/95 mb-section-gap-sm max-w-2xl mx-auto italic drop-shadow-md">El verdadero sabor de la cocina casera y el schop helado en San Joaquín</p>
+                <div class="flex flex-col sm:flex-row gap-gutter justify-center items-center">
+                    <a class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-md text-lg hover:bg-primary-container hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 font-semibold" href="#menu">Mira nuestra carta</a>
+                    <a class="border-2 border-white text-white px-10 py-4 rounded-full font-label-md text-lg hover:bg-white hover:text-forest-dark hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 font-semibold" href="#reservations">Reservar Mesa</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="py-section-gap-lg px-gutter max-w-container-max mx-auto" id="history">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                <div class="md:col-span-6 rounded-xl overflow-hidden shadow-2xl">
+                    <img alt="Warm cozy dining room setting with traditional elements" class="w-full h-auto object-cover" src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=1000">
+                </div>
+                <div class="md:col-span-5 md:col-start-8">
+                    <p class="text-label-md font-label-md text-primary mb-base font-semibold">Nuestra Historia</p>
+                    <h2 class="font-headline-lg text-headline-lg text-forest-dark mb-gutter leading-tight">¿Por qué La Mandarina?</h2>
+                    <div class="space-y-gutter text-body-lg font-body-lg text-on-surface-variant leading-relaxed">
+                        <p>Ubicados en la clásica calle Sierra Bella en la comuna de San Joaquín, somos un punto de encuentro tradicional para quienes buscan el verdadero sabor de la cocina casera chilena.</p>
+                        <p>Nacimos con el propósito de rescatar las recetas clásicas, esas que requieren paciencia, ingredientes frescos y mucho cariño. Aquí la comida se sirve abundante y se acompaña con un buen schop helado.</p>
+                        <p>Nuestra sazón única nos llevó a ser recomendados por el reconocido programa de televisión <span class="font-bold text-primary">"Hacedor de Hambre"</span>, destacando nuestro cariño y el sabor tradicional en cada uno de nuestros platos.</p>
+                        <p>Te invitamos a disfrutar de un ambiente familiar, nostálgico y con la mejor atención de barrio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialty Section -->
+        <section class="bg-surface-container py-section-gap-lg" id="specialty">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                    <div class="md:col-span-5 order-2 md:order-1">
+                        <p class="text-label-md font-label-md text-primary mb-base font-semibold">Especialidad de la Casa</p>
+                        <h2 class="font-headline-lg text-headline-lg text-forest-dark mb-gutter">Cocina Chilena</h2>
+                        <p class="text-body-lg font-body-lg text-on-surface-variant mb-section-gap-sm">Nuestras especialidades son preparadas lentamente para concentrar todo el sabor. Disfruta de la mejor cocina criolla hecha como en casa.</p>
+                        <div class="bg-cream-base p-gutter rounded-xl shadow-sm border border-outline-variant/30">
+                            <div class="flex justify-between items-end mb-base">
+                                <span class="font-headline-sm text-headline-sm text-forest-dark">Pollo al Cognac</span>
+                                <div class="dotted-leader"></div>
+                                <span class="font-label-md text-label-md text-primary font-bold">$12.500</span>
+                            </div>
+                            <div class="flex justify-between items-end mb-base">
+                                <span class="font-headline-sm text-headline-sm text-forest-dark">Carne Mechada con Puré</span>
+                                <div class="dotted-leader"></div>
+                                <span class="font-label-md text-label-md text-primary font-bold">$11.900</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="font-headline-sm text-headline-sm text-forest-dark">Porotos con Rienda</span>
+                                <div class="dotted-leader"></div>
+                                <span class="font-label-md text-label-md text-primary font-bold">$6.500</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-6 md:col-start-7 order-1 md:order-2">
+                        <div class="relative group">
+                            <div class="absolute -inset-4 bg-primary/10 rounded-xl blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
+                            <img alt="Traditional chicken dish in a rustic clay bowl" class="relative rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:-translate-y-2 w-full object-cover" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=1000">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Categories Section -->
+        <section class="py-section-gap-lg bg-background" id="menu">
+            <div class="max-w-container-max mx-auto px-gutter text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-forest-dark mb-base">Nuestra Carta de Barrio</h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant">Recetas abundantes cocinadas con paciencia y los mejores ingredientes</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 max-w-container-max mx-auto px-gutter">
+                <button data-tab="carnes-pobre" class="menu-tab-btn active bg-primary text-white px-6 py-3 rounded-full font-label-md transition-all shadow-md">
+                    Carnes a lo Pobre
+                </button>
+                <button data-tab="del-mar" class="menu-tab-btn bg-surface-container text-on-surface-variant px-6 py-3 rounded-full font-label-md transition-all hover:bg-surface-container-high hover:text-forest-dark">
+                    Menú del Mar
+                </button>
+                <button data-tab="vegano" class="menu-tab-btn bg-surface-container text-on-surface-variant px-6 py-3 rounded-full font-label-md transition-all hover:bg-surface-container-high hover:text-forest-dark">
+                    Menú Vegano
+                </button>
+                <button data-tab="comidas-tipicas" class="menu-tab-btn bg-surface-container text-on-surface-variant px-6 py-3 rounded-full font-label-md transition-all hover:bg-surface-container-high hover:text-forest-dark">
+                    Comidas Típicas
+                </button>
+                <button data-tab="beber" class="menu-tab-btn bg-surface-container text-on-surface-variant px-6 py-3 rounded-full font-label-md transition-all hover:bg-surface-container-high hover:text-forest-dark">
+                    Para Beber
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="max-w-container-max mx-auto px-gutter">
+                
+                <!-- Carnes a lo Pobre Panel -->
+                <div id="carnes-pobre" class="menu-panel grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <!-- Item 1 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Lomo a lo Pobre" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Lomo a lo Pobre Tradicional</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$13.900</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Corte tierno de lomo liso a la plancha, acompañado de papas fritas caseras doradas, cebolla caramelizada y dos huevos fritos con yema blanda.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">El Favorito</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=600" alt="Mechada a lo Pobre" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Mechada a lo Pobre</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$12.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Carne mechada de vacuno desmenuzada lentamente durante 8 horas, servida sobre una montaña de papas fritas, abundante cebolla dorada y dos huevos fritos.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Lenta Cocción</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Costillar de Cerdo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Costillar a lo Pobre</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$14.200</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Costillar de cerdo marinado en ají de color y comino, horneado lentamente, servido con papas fritas, cebolla caramelizada y huevos fritos de campo.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Abundante</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menú del Mar Panel -->
+                <div id="del-mar" class="menu-panel hidden grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <!-- Item 1 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1534080391025-09795d197a5b?auto=format&fit=crop&q=80&w=600" alt="Paila Marina" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Paila Marina Tradicional</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$11.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Sopa caliente de mariscos surtidos (choritos, almejas, camarones, calamares) cocidos en caldo de pescado con vino blanco, ajo y especias en pocillo de greda.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Tradición</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=600" alt="Reineta Frita" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Reineta Frita con Chilena</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$10.900</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Filete de reineta fresca rebosada y frita a la perfección, crujiente por fuera y jugosa por dentro, servida con ensalada chilena tradicional.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">El Más Fresco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=600" alt="Pastel de Jaiba" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Pastel de Jaiba de la Costa</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$12.900</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Carne de jaiba seleccionada desmenuzada y horneada en crema, pan rallado, queso parmesano y vino blanco en pocillo de greda.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menú Vegano Panel -->
+                <div id="vegano" class="menu-panel hidden grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <!-- Item 1 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=600" alt="Porotos con Rienda" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Porotos con Rienda Veganos</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$6.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Guiso tradicional de porotos con tallarines, zapallo camote, sofrito de cebolla, ajo, comino y un toque de pimentón rojo, sin ingredientes de origen animal.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">100% Vegano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600" alt="Pastel de Choclo Vegano" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Pastel de Choclo de Champiñones</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$9.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Pastel horneado de pastelera de maíz tierno, relleno con pino de champiñones y proteína de soya sazonada, aceitunas y pasas.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">De La Huerta</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600" alt="Charquicán" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Charquicán de la Huerta</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$7.200</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Guiso tradicional de papas, zapallo camote, choclo, porotos verdes y arvejas machacadas, coronado con una palta fileteada fresca.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Natural</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comidas Típicas Panel -->
+                <div id="comidas-tipicas" class="menu-panel hidden grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <!-- Item 1 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Pastel de Choclo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Pastel de Choclo Tradicional</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$10.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Masa de maíz tierno molido con albahaca fresca, horneada sobre pino de carne picada de vacuno, trozo de pollo, huevo duro y aceituna.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Imperdible</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=600" alt="Cazuela" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Cazuela de Vacuno San Joaquín</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$8.900</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Caldo de vacuno reponedor cocido con un trozo de tapapecho, una papa entera, un trozo de zapallo camote, choclo en coronta y arroz.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">El Reponedor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&q=80&w=600" alt="Empanadas" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Empanadas de Pino al Horno</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$5.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Empanadas clásicas chilenas de masa delgada rellenas de pino de carne picada de vacuno, cebolla caramelizada, huevo duro y aceitunas (2 unidades).</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Del Horno</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Para Beber Panel -->
+                <div id="beber" class="menu-panel hidden grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <!-- Item 1 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1538256909204-a77afc82e68c?auto=format&fit=crop&q=80&w=600" alt="Schop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Schop Mandarina Helado</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$3.800</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Vaso grande de schop de cerveza draft local servido a temperatura bajo cero. Refrescante, ideal para acompañar tus platos criollos.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Bien Helado!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?auto=format&fit=crop&q=80&w=600" alt="Terremoto" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Terremoto Tradicional</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$4.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Bebida típica chilena elaborada con vino pipeño de la casa, helado de piña artesanal y un toque de granadina o Fernet.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">El Chileno</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-cream-base p-6 rounded-xl shadow-md border border-outline-variant/30 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-full sm:w-36 h-36 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container shadow-inner">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=600" alt="Mote con Huesillo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-baseline mb-2 gap-2">
+                                    <h3 class="font-headline-sm text-xl text-forest-dark font-bold font-semibold">Mote con Huesillo Nostálgico</h3>
+                                    <span class="text-primary font-bold text-lg whitespace-nowrap">$3.500</span>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Bebida dulce tradicional de duraznos deshidratados cocidos con canela y chancaca, servidos con trigo mote cocido bien helado.</p>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Patrimonial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Reservations Form -->
+        <section class="py-section-gap-lg bg-surface-container-low" id="reservations">
+            <div class="max-w-3xl mx-auto px-gutter">
+                <div class="text-center mb-section-gap-sm">
+                    <h2 class="font-headline-lg text-headline-lg text-forest-dark mb-base">¿Quieres asegurar tu mesa?</h2>
+                    <p class="text-body-lg font-body-lg text-on-surface-variant">Haz tu solicitud de reserva aquí. Nos comunicaremos contigo a la brevedad para confirmar tu cupo.</p>
+                </div>
+                <form id="reservation-form" class="space-y-gutter bg-cream-base p-section-gap-sm rounded-xl shadow-lg border border-outline-variant/30">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <div class="space-y-base">
+                            <label class="block text-label-md font-label-md text-forest-dark">Nombre</label>
+                            <input required class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" placeholder="Ingrese su Nombre" type="text" id="res-name">
+                        </div>
+                        <div class="space-y-base">
+                            <label class="block text-label-md font-label-md text-forest-dark">Email</label>
+                            <input required class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" placeholder="Ingrese su Correo Electrónico" type="email" id="res-email">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                        <div class="space-y-base">
+                            <label class="block text-label-md font-label-md text-forest-dark">Fecha</label>
+                            <input required class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" type="date" id="res-date">
+                        </div>
+                        <div class="space-y-base">
+                            <label class="block text-label-md font-label-md text-forest-dark">Hora</label>
+                            <input required class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" type="time" id="res-time">
+                        </div>
+                        <div class="space-y-base">
+                            <label class="block text-label-md font-label-md text-forest-dark">Personas</label>
+                            <select class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" id="res-people">
+                                <option>2 personas</option>
+                                <option>3 personas</option>
+                                <option>4 personas</option>
+                                <option>Más de 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-base">
+                        <label class="block text-label-md font-label-md text-forest-dark">Mensaje o indicaciones especiales</label>
+                        <textarea class="w-full bg-surface-container-lowest border-outline-variant rounded-lg p-3 focus:ring-primary focus:border-primary transition-all" placeholder="Escribe aquí si necesitas algo especial..." rows="4" id="res-msg"></textarea>
+                    </div>
+                    <div class="pt-gutter">
+                        <button class="w-full bg-primary text-on-primary py-4 rounded-full font-label-md text-lg hover:bg-primary-container shadow-md hover:shadow-xl transition-all font-semibold" type="submit">SOLICITAR RESERVA</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="py-section-gap-lg">
+            <div class="max-w-container-max mx-auto px-gutter mb-gutter flex flex-col md:flex-row justify-between items-center gap-gutter">
+                <h2 class="font-headline-lg text-headline-lg text-forest-dark">¿Cómo llegar a La Mandarina?</h2>
+                <div class="flex gap-4">
+                    <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-[#33CCFF] text-white px-gutter py-3 rounded-full font-label-md hover:opacity-90 transition-opacity" href="https://waze.com/ul?ll=-33.4764615,-70.6320139&navigate=yes">
+                        <span class="material-symbols-outlined">directions_car</span>
+                        Abrir Waze
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-[#4285F4] text-white px-gutter py-3 rounded-full font-label-md hover:opacity-90 transition-opacity" href="https://www.google.com/maps/dir/?api=1&destination=-33.4764615,-70.6320139">
+                        <span class="material-symbols-outlined">map</span>
+                        Google Maps
+                    </a>
+                </div>
+            </div>
+            <!-- Mapa real OpenStreetMap — sin API Key necesaria -->
+            <div class="w-full h-[480px] relative shadow-inner border-t-4 border-primary/30 overflow-hidden">
+                <iframe
+                    title="Ubicación La Mandarina – Sierra Bella 2421, San Joaquín"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-70.6370139%2C-33.4814615%2C-70.6270139%2C-33.4714615&amp;layer=mapnik&amp;marker=-33.4764615%2C-70.6320139"
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    allowfullscreen
+                ></iframe>
+                <!-- Overlay card con dirección -->
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-cream-base/95 backdrop-blur-sm px-6 py-4 rounded-xl shadow-2xl border border-outline-variant flex items-center gap-4 whitespace-nowrap">
+                    <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                    <div>
+                        <p class="font-semibold text-forest-dark font-headline-sm text-base leading-tight">Sierra Bella 2421</p>
+                        <p class="text-on-surface-variant text-sm">San Joaquín, Región Metropolitana</p>
+                    </div>
+                    <a href="https://www.openstreetmap.org/?mlat=-33.4764615&amp;mlon=-70.6320139#map=17/-33.4764615/-70.6320139"
+                       target="_blank" rel="noopener noreferrer"
+                       class="ml-2 bg-primary text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-primary-container transition-all shadow-sm">
+                        Ver más grande
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Checkered Banner -->
+    <div class="h-3 w-full checkered-pattern"></div>
+
+    <!-- Footer -->
+    <footer class="bg-forest-dark text-cream-base w-full py-section-gap-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+            <div class="flex flex-col gap-base">
+                <div class="text-headline-sm font-headline-sm text-cream-base flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary">eco</span>
+                    La Mandarina
+                </div>
+                <p class="text-body-md font-body-md opacity-80 max-w-xs">© 2026 Restaurant &amp; Shopería La Mandarina. Recetas tradicionales y ambiente familiar de barrio en San Joaquín.</p>
+                <div class="flex gap-gutter mt-base">
+                    <a class="hover:text-primary transition-colors" href="https://www.google.com/maps/place/Restaurant+Shoperia+la+Mandarina/@-33.4764615,-70.6320139,18z/" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                        <span class="material-symbols-outlined">public</span>
+                    </a>
+                    <a class="hover:text-primary transition-colors" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-base">
+                <h4 class="text-label-md font-label-md text-secondary">Contacto</h4>
+                <div class="flex items-start gap-2">
+                    <span class="material-symbols-outlined text-sm mt-1">location_on</span>
+                    <span class="text-label-md font-label-md">Sierra Bella 2421, San Joaquín</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">call</span>
+                    <span class="text-label-md font-label-md">+56 9 9437 0380</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">mail</span>
+                    <span class="text-label-md font-label-md">contacto@shoperialamandarina.cl</span>
+                </div>
+            </div>
+            <div class="flex flex-col gap-base">
+                <h4 class="text-label-md font-label-md text-secondary">Navegación</h4>
+                <nav class="flex flex-col gap-2">
+                    <a class="text-surface-variant/80 hover:text-primary transition-colors text-label-md font-label-md" href="#menu">Carta</a>
+                    <a class="text-surface-variant/80 hover:text-primary transition-colors text-label-md font-label-md" href="#history">Nosotros</a>
+                    <a class="text-surface-variant/80 hover:text-primary transition-colors text-label-md font-label-md" href="#specialty">Especialidades</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
